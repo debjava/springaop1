@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="ISO-8859-1">
+<script src="angular-1.2.23/angular.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div ng-controller="loginController">
+		UserName:<input type="text" ng-model="userName"/>
+		Password:<input type="password" ng-model="password"/>
+    <button ng-click="login()">Login</button>
+    
+    <div >
+		My Nam is {{ contacts  }}
+		
+	</div>
+	
+	</div>
+	
+	
+	<div ng-controller="BMWController">
+     
+    My name is {{ name }}
+ 
+    <button ng-click="clickme()">Click Me</button> 
+ 
+</div>
+	
+<script type="text/javascript">
+    function loginController($scope) {
+        $scope.login = function() {
+        	$scope.userName;
+        	$scope.password = 'test';
+        	//alert($scope.userName);
+        	$scope.name=$scope.userName;
+        	//$scope.contacts='sss';
+        	$scope.contacts=$scope.userName;
+        	//$scope.contacts=angular.copy(userName);
+        }
+    }
+    
+    function BMWController($scope, $injector) {
+        
+        //$injector.invoke(CarController, this, {$scope: $scope});
+        $scope.clickme = function() {
+        //alert('This is parent controller "CarController" calling');
+        	$scope.name = 'BMW';
+    }
+         
+        
+      
+    }
+</script>
+</body>
+</html>

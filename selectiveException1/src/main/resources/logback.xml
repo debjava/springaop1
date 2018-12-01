@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 minutes">
+  
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    
+   <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator>        
+        <matcher>
+          <Name>odd</Name>
+          <!-- filter out odd numbered statements -->
+          <regex>org.hibernate</regex>
+        </matcher>
+        
+        <expression>odd.matches(formattedMessage)</expression>
+      </evaluator>
+      <OnMismatch>NEUTRAL</OnMismatch>
+      <OnMatch>DENY</OnMatch>
+    </filter>
+    
+    
+    
+    
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+    <logger name="org.springframework" level="OFF" />
+      <logger name="org.hibernate.hql.ast" level="OFF"/>
+  </appender>
+   
+    
+
+<!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
+     <logger name="org.springframework" level="OFF" />
+      <logger name="org.hibernate.hql.ast" level="OFF"/>
+     
+    <root level="ERROR">
+    	<appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLINGFILE"/>
+    </root>
+</configuration>
+
+

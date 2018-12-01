@@ -1,0 +1,13 @@
+2015-03-01 00:56:22.527+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:55] - Unable to get the message details... - org.hibernate.HibernateException - Real Root Exception while getting the message using hibernate query.
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.repository.RepositoryHibernate.getMessageRepositorySpecific(RepositoryHibernate.java:40)
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.repository.RepositoryHibernate.getMessageFromDB(RepositoryHibernate.java:28)
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.repository.RepositoryHibernate.getMessage(RepositoryHibernate.java:24)
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.repository.RepositoryHibernate$$FastClassByCGLIB$$79e7b9b6.invoke(<generated>)
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.repository.RepositoryHibernate$$EnhancerByCGLIB$$187f4e2b.getMessage(<generated>)
+2015-03-01 00:56:22.532+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.service.MessageService.getMessages(MessageService.java:31)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.service.MessageService.getSuperMessage(MessageService.java:26)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.service.MessageService.getBaseMessage(MessageService.java:22)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.resource.MessageResource.retreiveMessage(MessageResource.java:28)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.resource.MessageResource.validateMessage(MessageResource.java:23)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.resource.MessageResource.getDiscussionMessage(MessageResource.java:19)
+2015-03-01 00:56:22.533+0530 [Thread-0] ERROR com.jeevan.logback.LogWriter [LogWriter.java:57] - 	 at com.apollo.discussions.Test.main(Test.java:25)

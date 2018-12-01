@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+   mavenCentral()
+}
+
+mainClassName = "com.ddlab.rnd.aop.TestNoXMLAOP"
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+	compile 'org.springframework:spring-context:4.0.5.RELEASE'
+	compile 'org.aspectj:aspectjrt:1.7.4'
+	compile 'org.aspectj:aspectjtools:1.7.4'
+    testCompile 'junit:junit:4.12'
+}
+
+//First run "gradle build"
+//Run "gradle run"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="5 minutes">
+
+    <appender name="discussions_exceptions_appender" class="com.jeevan.logback.MyAppender">
+    	<!-- <file>${learningplatform.logs:-./learningplatform/logs}/learningplatform_1.log</file> -->
+        <!-- <packageNames>edu.apollogrp, hibernate.or.spring,com.apollo</packageNames> -->
+        <!-- <packageNames>edu.apollogrp</packageNames> -->
+        <packageNames>com.apollogrp,edu.apollogrp,com.apollo</packageNames>
+    </appender>
+
+    <logger name="discussions_exceptions" level="DEBUG" additivity="false">
+        <appender-ref ref="discussions_exceptions_appender"/>
+    </logger>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+        ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+  
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- <appender name="ROLLINGFILE" class="com.jeevan.logback.MyAppender"> -->
+    	<packageNames>com.apollogrp,edu.apollogrp</packageNames>
+        <file>${learningplatform.logs:-./learningplatform/logs}/learningplatform.log</file>
+    
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${learningplatform.logs:-./learningplatform/logs}/learningplatform-%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 5MB -->
+                <maxFileSize>5MB</maxFileSize>        
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>12</maxHistory>  
+        </rollingPolicy>       
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    <logger name="file_logger" level="DEBUG" additivity="false">
+        <appender-ref ref="ROLLINGFILE"/>
+    </logger>-->
+
+    <!-- <root level="${learningplatform.log.level:-DEBUG}">
+        <appender-ref ref="ROLLINGFILE"/>
+    </root> -->
+    <root level="${learningplatform.log.level:-ERROR}">
+        <appender-ref ref="ROLLINGFILE"/>
+        <!-- <appender-ref ref="discussions_exceptions_appender"/> -->
+    </root>
+</configuration>
+
+

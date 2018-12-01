@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+		
+    <aop:aspectj-autoproxy />
+ 
+	<bean id="account" class="com.ddlab.rnd.aop.AccountImpl" />
+ 
+	<!-- Before Aspect -->
+	<bean id="beforeAspect" class="com.ddlab.rnd.aop.BeforeAspect" />
+	<bean id="beforeAspect1" class="com.ddlab.rnd.aop.BeforeAspect1" />
+	
+	<!-- After Aspect -->
+	<bean id="afterAspect" class="com.ddlab.rnd.aop.AfterAspect" />
+	<bean id="afterAspect1" class="com.ddlab.rnd.aop.AfterAspect1" />
+	
+	<!-- Around Aspect -->
+	<bean id="aroundAspect1" class="com.ddlab.rnd.aop.AroundAspect1" />
+	
+	<!-- After Return Aspect -->
+	<bean id="afterReturnAspect" class="com.ddlab.rnd.aop.AfterReturnAspect" />
+	<bean id="afterReturnAspect1" class="com.ddlab.rnd.aop.AfterReturnAspect1" />
+	
+	<!-- After Throwing Aspect -->
+	<bean id="afterThrowingAspect" class="com.ddlab.rnd.aop.AfterThrowingAspect" />
+	<bean id="afterThrowingAspect1" class="com.ddlab.rnd.aop.AfterThrowingAspect1" />
+
+</beans>    		

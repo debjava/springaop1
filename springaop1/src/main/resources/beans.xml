@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+    <bean id="employee" class="com.ddlab.rnd.spring.aop.Employee">
+		<property name="name" value="Deb" />
+		<property name="salary" value="1234" />
+	</bean>
+	
+    <bean id="aopBeforeAdvice" class="com.ddlab.rnd.spring.aop.AopBeforeAdvice"/>
+    
+    <bean id="aopAfterAdvice" class="com.ddlab.rnd.spring.aop.AopAfterAdvice"/>
+    
+    <bean id="aopAroundAdvice" class="com.ddlab.rnd.spring.aop.AopAroundAdvice"/>
+    
+    <bean id="aopAfterThrowing" class="com.ddlab.rnd.spring.aop.AopAfterThrowing"/>
+        
+	<bean id="employeeProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="target" ref="employee"/>
+	    <property name="interceptorNames">
+	        <list>
+	            <value>aopAfterThrowing</value>
+	        </list>
+	    </property>
+	</bean>
+    
+</beans>    

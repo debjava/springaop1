@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 minutes">
+
+<!-- <property name="mask" 
+value="java.lang.reflect.Method,
+org.apache.catalina,
+org.springframework.aop,
+org.springframework.security,
+org.springframework.transaction,
+org.springframework.web,
+sun.reflect,
+net.sf.cglib"/>
+
+ <turboFilter class="com.apollo.discussions.SampleTurboFilter">
+    <Marker>com.apollo</Marker>
+  </turboFilter>
+  
+  <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+    <Marker>com.apollo</Marker>
+    <OnMatch>DENY</OnMatch>
+  </turboFilter> -->
+  
+
+	<!-- <conversionRule conversionWord="nanos" 
+                  converterClass="ccom.apollo.discussions.MySampleConverter" /> -->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+        ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <!-- <filter class="com.apollo.discussions.SampleFilter">
+        	<packageNames>com.apollogrp,edu.apollogrp,com.apollo</packageNames>
+        </filter>	 -->
+        <encoder class="com.ddlab.rnd.logback.LayoutWrappingEncoder">
+        <pattern>%d{HH:mm:ss.SSS} | %m%n%rEx{full,AbstractPlainSocketImpl,
+  org.hibernate.hql,
+  org.springframework}</pattern>
+  </encoder>
+        
+        <!-- <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+        	<layout class="com.ddlab.rnd.logback.MyPatternLayout" />
+        	<pattern>%d{HH:mm:ss.SSS} | %-5level | %thread | %logger{1} | %m%n%rEx{full,
+          java.lang.reflect.Method,
+          org.apache.catalina,
+          org.hibernate.hql.ast.util,
+          org.springframework.aop,
+          org.springframework.security,
+          org.springframework.transaction,
+          org.springframework.web,
+          sun.reflect,
+          net.sf.cglib,
+          ByCGLIB
+        }
+        </pattern> -->
+           <!--  <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern> -->
+        <!-- </encoder> -->
+        
+        
+       <!--  <pattern>%d{HH:mm:ss.SSS} | %-5level | %thread | %logger{1} | %m%n%rEx(full)
+        </pattern> -->
+        
+        <!-- <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="com.apollo.discussions.MySampleLayout" />
+    </encoder> -->
+        
+        
+    </appender>
+  
+    <appender name="ROLLINGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      
+        <file>${learningplatform.logs:-./learningplatform/logs}/learningplatform.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${learningplatform.logs:-./learningplatform/logs}/learningplatform-%d{yyyy-MM-dd_HH}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 5MB -->
+                <maxFileSize>5MB</maxFileSize>        
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>12</maxHistory>  
+        </rollingPolicy>       
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>
+            <!-- <pattern>%date{yyyy-MM-dd HH:mm:ss.SSSZ} [%thread] %-5level %logger{36} [%file:%line] - %msg%n %rEx{full, ${mask}}</pattern> -->
+        </encoder>
+    </appender>
+    
+   
+    
+    <logger category="org.hibernate">
+    <level name="OFF"/>
+</logger>
+
+<!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
+     <logger name="org.springframework" level="OFF" />
+      <logger name="org.hibernate.hql.ast" level="OFF"/>
+     
+    <root level="ERROR">
+    	<appender-ref ref="STDOUT"/>
+        <appender-ref ref="ROLLINGFILE"/>
+    </root>
+</configuration>
+
+
